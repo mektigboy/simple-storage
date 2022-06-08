@@ -23,11 +23,16 @@ contract SimpleStorage {
     // Struct[3] public arrayOfStruct; // Size of 3.
 
     function pushToArrayOfStruct(uint256 _id, string memory _name) public {
-        // Option 1.
+        // Option 1:
         Struct memory myForthStruct = Struct({ id: _id, name: _name });
         arrayOfStruct.push(myForthStruct);
-        // Option 2.
-        arrayOfStruct.push(Struct(_id, _name));
+
+        // Option 2:
+        // Struct memory myForthStruct = Struct(_id, _name); // Same order as the one specified in struct "Struct".
+        // arrayOfStruct.push(myForthStruct);
+
+        // Option 3:
+        // arrayOfStruct.push(Struct(_id, _name));
     }
 
     function store(uint256 _myUnsignedInteger) public returns(uint256) {
