@@ -8,12 +8,26 @@ contract SimpleStorage {
     string public myString = "String";
     address public myAddress = 0xa7a0275220A00ae3B360F7cB080069063e886271;
     bytes32 public myBytes = "Bytes";
-    uint256 public favoriteNumber = 1;
+    uint256 public favoriteNumber = 1; // Same as function <retrieve>.
     Struct public myFirstStruct = Struct({ id: 1, name: "First"});
+    Struct public mySecondStruct = Struct({ id: 2, name: "Second"});
+    Struct public myThirdStruct = Struct({ id: 3, name: "Third"});
 
+    // Struct named "Struct", to store the identity of a person.
     struct Struct {
         uint256 id;
         string name;
+    }
+
+    Struct[] public arrayOfStruct; // Any size.
+    // Struct[3] public arrayOfStruct; // Size of 3.
+
+    function pushToArrayOfStruct(uint256 _id, string memory _name) public {
+        // Option 1.
+        Struct memory myForthStruct = Struct({ id: _id, name: _name });
+        arrayOfStruct.push(myForthStruct);
+        // Option 2.
+        arrayOfStruct.push(Struct(_id, _name));
     }
 
     function store(uint256 _myUnsignedInteger) public returns(uint256) {
