@@ -13,6 +13,8 @@ contract SimpleStorage {
     Struct public mySecondStruct = Struct({ id: 2, name: "Second"});
     Struct public myThirdStruct = Struct({ id: 3, name: "Third"});
 
+    mapping(uint256 => string) public myMapping;
+
     // Struct named "Struct", to store the identity of a person.
     struct Struct {
         uint256 id;
@@ -33,6 +35,10 @@ contract SimpleStorage {
 
         // Option 3:
         // arrayOfStruct.push(Struct(_id, _name));
+    }
+
+    function addToMapping(uint256 _id, string memory _name) public {
+        myMapping[_id] = _name;
     }
 
     function store(uint256 _myUnsignedInteger) public returns(uint256) {
