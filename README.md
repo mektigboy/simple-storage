@@ -1,1 +1,1 @@
-# Simple Storage Example
+# Simple Storage
